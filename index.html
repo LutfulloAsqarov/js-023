@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/style.min.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <section class="cars container">
+            <h1 class="cars__title">Cars</h1>
+            <div class="cars__header">
+                <button class="cars__add-car">Add car</button>
+            </div>
+            <div class="cars__cards"></div>
+        </section>
+        <section class="model">
+            <form class="form">
+                <h2>Add car</h2>
+                <div class="form__inputs">
+                    <input
+                        required
+                        class="car-brand"
+                        type="text"
+                        placeholder="Car brand"
+                    />
+                    <input
+                        required
+                        class="car-name"
+                        type="text"
+                        placeholder="Car name"
+                    />
+                    <input
+                        required
+                        class="made-country"
+                        type="text"
+                        placeholder="Made country"
+                    />
+                    <input
+                        required
+                        class="create-date"
+                        type="date"
+                        placeholder="Create date"
+                    />
+                    <input
+                        required
+                        class="car-img"
+                        type="text"
+                        placeholder="Img url"
+                    />
+                    <input
+                        required
+                        class="car-color"
+                        type="text"
+                        placeholder="Color"
+                    />
+                    <input
+                        required
+                        class="car-hp"
+                        type="number"
+                        placeholder="Horsepower"
+                    />
+                    <input
+                        required
+                        class="car-max-speed"
+                        type="number"
+                        placeholder="Max speed"
+                    />
+                    <input
+                        required
+                        class="car-price"
+                        type="number"
+                        placeholder="Price"
+                    />
+                </div>
+                <div class="form__btns">
+                    <button class="form__cancel">Cancel</button>
+                    <button class="form__submit">Submit</button>
+                </div>
+            </form>
+        </section>
+        <div class="close-form"></div>
+
+        <script type="module" src="./js/index.js"></script>
+    </body>
+</html>
