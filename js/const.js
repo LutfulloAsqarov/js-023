@@ -1,1 +1,1 @@
-export const CARDATA = "carData";
+export const PRODUCT = "product";

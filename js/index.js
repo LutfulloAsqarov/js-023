@@ -1,92 +1,74 @@
-import { CARS } from "./data.js";
-import { BMW } from "./classes.js";
-import { CARDATA } from "./const.js";
+import { PRODUCTS } from "./data.js";
+import { Product } from "./classes.js";
+import { PRODUCT } from "./const.js";
 
-const cards = document.querySelector(".cars__cards");
+const cards = document.querySelector(".products__cards");
 const closeForm = document.querySelector(".close-form");
 const cancelBtn = document.querySelector(".form__cancel");
 const submitBtn = document.querySelector(".form__submit");
-const addBtn = document.querySelector(".cars__add-car");
+const addBtn = document.querySelector(".products__add-product");
 const model = document.querySelector(".model");
 const form = document.querySelector(".form");
-const carBrand = document.querySelector(".car-brand");
-const carName = document.querySelector(".car-name");
-const carMadeCountry = document.querySelector(".made-country");
-const carCreateDate = document.querySelector(".create-date");
-const carImg = document.querySelector(".car-img");
-const carColor = document.querySelector(".car-color");
-const carHp = document.querySelector(".car-hp");
-const carMaxSpeed = document.querySelector(".car-max-speed");
-const carPrice = document.querySelector(".car-price");
+const name = document.querySelector(".product__name");
+const quantity = document.querySelector(".product__quantity");
+const unit = document.querySelector("#product__unit");
+const price = document.querySelector(".product__price");
+const url = document.querySelector(".product__img");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    let car = new BMW(
-        carBrand.value,
-        carName.value,
-        carMadeCountry.value,
-        carCreateDate.value,
-        carImg.value,
-        carColor.value,
-        carHp.value,
-        carMaxSpeed.value,
-        carPrice.value
+    let product = new Product(
+        name.value,
+        quantity.value,
+        unit.value,
+        price.value,
+        url.value
     );
 
-    CARS.push(car);
-    localStorage.setItem(CARDATA, JSON.stringify(CARS));
+    PRODUCTS.push(product);
+    localStorage.setItem(PRODUCT, JSON.stringify(PRODUCTS));
 
-    mapCars(CARS);
+    mapProducts(PRODUCTS);
 
-    carBrand.value = "";
-    carName.value = "";
-    carMadeCountry.value = "";
-    carCreateDate.value = "";
-    carImg.value = "";
-    carColor.value = "";
-    carHp.value = "";
-    carMaxSpeed.value = "";
-    carPrice.value = "";
+    name.value = "";
+    quantity.value = "";
+    unit.value = "";
+    price.value = "";
+    url.value = "";
 
     model.style.display = "none";
 });
 
-function mapCars(carData) {
-    let carCards = "";
-    carData.forEach((car) => {
-        carCards += `
-            <div class="cars__card">
-                <div class="cars__card__img">
-                    <img src="${car.img}" alt="${car.firsName}" />
+function mapProducts(productData) {
+    let productCards = "";
+    productData.forEach((product) => {
+        productCards += `
+            <div class="products__card">
+                <div class="products__card__img">
+                    <img src="${product.url}" alt="${product.name}" />
                 </div>
-                <div class="cars__card__info">
-                    <h3 class="cars__card__title">
-                        Brand: ${car.brand}
+                <div class="products__card__info">
+                    <h3 class="products__card__title">
+                        Name: ${product.name}
                     </h3>
-                    <p class="cars__card__desc">
-                        Name: ${car.name}
+                    <p class="products__card__desc">
+                        Quantity: ${product.quantity}
                     </p>
-                    <p class="cars__card__desc">
-                        Made country: ${car.madeCountry}
-                    </p>
-                    <p class="cars__card__desc">Create data: ${car.createDate}</p>
-                    <p class="cars__card__desc">Color: ${car.color}</p>
-                    <p class="cars__card__desc">Horsepower: ${car.hp} hp</p>
-                    <p class="cars__card__desc">Max speed: ${car.maxSpeed} km/h</p>
-                    <p class="cars__card__desc">Price: ${car.cost}$</p>
-                    <div class="cars__card__btns">
-                        <button class="delate" name="delate" data-id="${car.id}">Delate</button>
+                    <p class="products__card__desc">Unit: ${product.unit}</p>
+                    <p class="products__card__desc">Price: ${product.price}</p>
+                    <div class="products__card__btns">
+                        <button class="delate" name="delate" data-id="${product.id}">Delate</button>
                         <button class="edit" name="edit">Edit</button>
                     </div>
                 </div>
             </div>
         `;
-        cards.innerHTML = carCards;
+        cards.innerHTML = productCards;
     });
 }
 
-mapCars(CARS);
+mapProducts(PRODUCTS);
 
 addBtn.addEventListener("click", () => {
     model.style.display = "block";
@@ -94,23 +76,28 @@ addBtn.addEventListener("click", () => {
 });
 cancelBtn.addEventListener("click", () => {
     model.style.display = "none";
+    closeForm.style.display = "none";
 });
 closeForm.addEventListener("click", () => {
     model.style.display = "none";
     closeForm.style.display = "none";
 });
+submitBtn.addEventListener("click", () => {
+    model.style.display = "none";
+    closeForm.style.display = "none";
+});
 
-const deleteCar = (id) => {
+const deleteProduct = (id) => {
     if (confirm("Are you sure")) {
-        let index = CARS.findIndex((u) => u.id === id);
-        CARS.splice(index, 1);
-        mapCars(CARS);
-        localStorage.setItem(CARDATA, JSON.stringify(CARS));
+        let index = PRODUCTS.findIndex((u) => u.id === id);
+        PRODUCTS.splice(index, 1);
+        mapProducts(PRODUCTS);
+        localStorage.setItem(PRODUCT, JSON.stringify(PRODUCTS));
     }
 };
 
 cards.addEventListener("click", (e) => {
     if (e.target.name === "delate") {
-        deleteCar(e.target.dataset.id);
+        deleteProduct(e.target.dataset.id);
     }
 });

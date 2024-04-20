@@ -8,12 +8,12 @@
         <title>Document</title>
     </head>
     <body>
-        <section class="cars container">
-            <h1 class="cars__title">Cars</h1>
-            <div class="cars__header">
-                <button class="cars__add-car">Add car</button>
+        <section class="products container">
+            <h1 class="products__title">products</h1>
+            <div class="products__header">
+                <button class="products__add-product">Add product</button>
             </div>
-            <div class="cars__cards"></div>
+            <div class="products__cards"></div>
         </section>
         <section class="model">
             <form class="form">
@@ -21,57 +21,33 @@
                 <div class="form__inputs">
                     <input
                         required
-                        class="car-brand"
+                        class="product__name"
                         type="text"
-                        placeholder="Car brand"
+                        placeholder="Product name"
                     />
                     <input
                         required
-                        class="car-name"
-                        type="text"
-                        placeholder="Car name"
-                    />
-                    <input
-                        required
-                        class="made-country"
-                        type="text"
-                        placeholder="Made country"
-                    />
-                    <input
-                        required
-                        class="create-date"
-                        type="date"
-                        placeholder="Create date"
-                    />
-                    <input
-                        required
-                        class="car-img"
-                        type="text"
-                        placeholder="Img url"
-                    />
-                    <input
-                        required
-                        class="car-color"
-                        type="text"
-                        placeholder="Color"
-                    />
-                    <input
-                        required
-                        class="car-hp"
+                        class="product__quantity"
                         type="number"
-                        placeholder="Horsepower"
+                        placeholder="Quantity"
                     />
+                    <select name="product__unit" id="product__unit">
+                        <option value="kg">Kg</option>
+                        <option value="litr">Litr</option>
+                        <option value="dona">Dona</option>
+                        <option value="metr">Metr</option>
+                    </select>
                     <input
                         required
-                        class="car-max-speed"
-                        type="number"
-                        placeholder="Max speed"
-                    />
-                    <input
-                        required
-                        class="car-price"
+                        class="product__price"
                         type="number"
                         placeholder="Price"
+                    />
+                    <input
+                        required
+                        class="product__img"
+                        type="text"
+                        placeholder="Img url"
                     />
                 </div>
                 <div class="form__btns">
